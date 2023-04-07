@@ -2,7 +2,7 @@ FROM python:3
 
 WORKDIR /app
 
-COPY ./Server /app
+COPY ./src /app
 
 RUN pip install --upgrade pip
 RUN pip install python-dotenv
