@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        {{ header | safe }}
+    </head>
+    <body>
+        {{ navbar | safe }}
+        <div class="container">
+            <div class="text-center">
+                <div class="display-3">Transfer</div>
+            </div>
+
+            <br />
+
+            <div class="alert alert-danger" role="alert" id="errorMessage" style="display: none;">{{ errorMessage }}</div>
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="fromAddress" class="form-label">From Address</label>
+                            <input type="text" class="form-control" id="fromAddress" name="fromAddress" placeholder="0x" value="{{ fromAddress }}">
+                            <div class="form-text">Input your ethereum address.</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="secretKey" class="form-label">Secret Key</label>
+                            <input type="password" class="form-control" id="secretKey" name="secretKey" placeholder="•••••" value="{{ secretKey }}">
+                            <div class="form-text">Input the secret key of your account.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="toAddress" class="form-label">To Address</label>
+                            <input type="text" class="form-control" id="toAddress" name="toAddress" placeholder="0x" value="{{ toAddress }}">
+                            <div class="form-text">Input the target address.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="tokenId" class="form-label">Token ID</label>
+                            <input type="text" class="form-control" id="tokenId" name="tokenId" placeholder="0" value="{{ tokenId }}">
+                            <div class="form-text">The token id must be a integer. (e.g. 0, 1, 2, ...)</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input type="text" class="form-control" id="amount" name="amount" placeholder="0" value="{{ amount }}">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-danger" onclick="clearInputField()">Clear</button>
+                <button type="submit" class="btn btn-primary" formmethod="get">Send</button>
+            </form>
+
+            <hr />
+
+            <div id="result">
+                <h3>Transaction</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Attribute</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>From Address</td>
+                            <td><a href="https://goerli.etherscan.io/address/{{ fromAddress }}" class="text-decoration-none" target="_blank">{{ fromAddress }}</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>To Address</td>
+                            <td><a href="https://goerli.etherscan.io/address/{{ toAddress }}" class="text-decoration-none" target="_blank">{{ toAddress }}</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Token ID</td>
+                            <td>{{ tokenId }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Amount</td>
+                            <td>{{ amount }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Transaction Hash</td>
+                            <td><a href="https://goerli.etherscan.io/tx/{{ transactionHash }}" class="text-decoration-none" target="_blank">{{ transactionHash }}</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Time</td>
+                            <td>{{ nowTime }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var transactionHash = "{{ transactionHash }}", errorMessage = "{{ errorMessage }}";
+
+            if (errorMessage == "") $("#errorMessage").hide();
+            else $("errorMessage").show();
+
+            if (transactionHash == "") $("#result").hide();
+            else $("#result").show();
+
+            $("input[type='text']").click(function () {
+                $(this).select();
+            });
+
+            function clearInputField() {
+                $("#fromAddress").val("");
+                $("#secretKey").val("");
+                $("#toAddress").val("");
+                $("#tokenId").val("");
+                $("#amount").val("");
+            }
+        </script>
+    </body>
+</html>
