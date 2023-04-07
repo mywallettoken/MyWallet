@@ -28,7 +28,7 @@
 
 ## About The Project
 
-![](https://github.com/91d906h4/MyWallet/blob/master/Asset/mywallet.gif)
+![](https://github.com/mywallettoken/MyWallet/blob/main/asset/mywallet.gif)
 
 This is a tiny dApp that you can transfer "MyWallet" ERC-1155 tokens or view the balance with.
 
