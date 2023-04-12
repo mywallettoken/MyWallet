@@ -86,4 +86,4 @@ Just access the hidden service via Tor Browser and start to transfer your MyWall
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/mywallettoken/MyWallet/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/mywallettoken/MyWallet/blob/main/LICENSE) for more information.
